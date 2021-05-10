@@ -40,9 +40,17 @@
     <v-main>
       <v-container>
         <v-text-field
-          label="Regular"
-          v-model="serial_input"
+          label="Serial Input"
+          v-model="input"
+          @change="write()"
         ></v-text-field>
+
+        <v-textarea
+          outlined
+          label="Serial Output"
+          v-model="output"
+          height="500"
+        ></v-textarea>
       </v-container>
     </v-main>
   </v-app>
@@ -55,9 +63,15 @@ export default {
 
   data: () => {
     return {
-      serial_input: '',
-      serial_output: ''
+      input: '',
+      output: ''
     }
   },
+
+  methods: {
+    write() {
+      this.output += this.input;
+    }
+  }
 };
 </script>
